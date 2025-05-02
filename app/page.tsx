@@ -445,7 +445,7 @@ export default function Home() {
                   padding: "12px 24px",
                   fontSize: 18,
                   borderRadius: 8,
-                  background: "#ff7043",
+                  background: "#4caf50",
                   color: "#fff",
                   border: "none",
                   fontWeight: "bold",
