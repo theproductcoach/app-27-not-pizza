@@ -103,6 +103,56 @@ export default function Home() {
     setError(null);
   };
 
+  // Result container for the analyzed image
+  const AnalyzedImage = ({ url }: { url: string }) => {
+    const [imageError, setImageError] = useState(false);
+
+    return (
+      <div
+        style={{
+          background: "#fff",
+          padding: 16,
+          borderRadius: 16,
+          boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
+          marginTop: "0.5vh",
+          position: "relative",
+          width: 300,
+          height: 300,
+          overflow: "hidden",
+        }}
+      >
+        {imageError ? (
+          // Fallback to regular img tag if Next.js Image fails
+          <img
+            src={url}
+            alt="Analyzed"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+              borderRadius: 8,
+            }}
+          />
+        ) : (
+          // Try Next.js Image component first
+          <div style={{ position: "relative", width: "100%", height: "100%" }}>
+            <Image
+              src={url}
+              alt="Analyzed"
+              fill
+              style={{
+                objectFit: "contain",
+                borderRadius: 8,
+              }}
+              onError={() => setImageError(true)}
+              unoptimized
+            />
+          </div>
+        )}
+      </div>
+    );
+  };
+
   // Render the result screen if we have a result
   if (result) {
     return (
@@ -243,28 +293,8 @@ export default function Home() {
             )}
           </div>
 
-          <div
-            style={{
-              background: "#fff",
-              padding: 16,
-              borderRadius: 16,
-              boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
-              marginTop: "0.5vh",
-              position: "relative",
-              width: 300,
-              height: 300,
-            }}
-          >
-            <Image
-              src={result.url}
-              alt="Analyzed"
-              fill
-              style={{
-                objectFit: "contain",
-                borderRadius: 8,
-              }}
-            />
-          </div>
+          {/* Use the new AnalyzedImage component */}
+          <AnalyzedImage url={result.url} />
 
           <div
             style={{
