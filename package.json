@@ -10,13 +10,16 @@
   },
   "dependencies": {
     "@vercel/blob": "^1.0.0",
+    "formidable": "^3.5.4",
     "next": "15.3.1",
     "openai": "^4.96.2",
     "react": "^19.0.0",
+    "react-confetti": "^6.4.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/formidable": "^3.4.5",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
