@@ -1,6 +1,4 @@
 "use client";
-import Image from "next/image";
-import styles from "./page.module.css";
 import CameraCapture from "../components/CameraCapture";
 import { useState } from "react";
 
@@ -14,10 +12,19 @@ export default function Home() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background: "#ffe066",
+        background: `url('/bg-hero.png')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
-      <h1 style={{ fontSize: "2.5rem", fontWeight: "bold", marginBottom: 24 }}>
+      <h1
+        style={{
+          fontSize: "2.5rem",
+          fontWeight: "bold",
+          marginBottom: 24,
+          color: "#e53935",
+        }}
+      >
         Is it pizza?
       </h1>
       <CameraCapture onCapture={setImage} />
