@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Is It Pizza?
+
+A fun Next.js app that uses your camera to take a picture, uploads it to Vercel Blob Storage, and uses OpenAI GPT-4 Vision to tell you if the image contains pizza or not!
+
+## Features
+
+- Take a picture using your device camera or upload an image
+- Uploads the image to Vercel Blob Storage
+- Sends the image to OpenAI GPT-4 Vision for analysis
+- Tells you if the image is pizza or not, with a playful UI
+- Confetti celebration for pizza results
+- Mobile-friendly and works in modern browsers
 
 ## Getting Started
 
-First, run the development server:
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Set up environment variables
+
+Create a `.env.local` file in the root of your project with the following:
+
+```env
+OPENAI_API_KEY=your_openai_api_key
+BLOB_READ_WRITE_TOKEN=your_vercel_blob_token
+```
+
+- Get your OpenAI API key from <https://platform.openai.com/api-keys>
+- Get your Vercel Blob token from <https://vercel.com/docs/storage/vercel-blob>
+
+### 3. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To build and start in production mode:
 
-## Learn More
+```bash
+npm run build
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Image Domains
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This app is configured to allow images from Vercel Blob Storage. If you use a different storage provider, update `next.config.ts` accordingly.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+- `app/page.tsx` — Main UI and logic
+- `app/api/upload/route.ts` — Handles image uploads to Vercel Blob
+- `app/api/analyze/route.ts` — Handles image analysis with OpenAI Vision
+- `components/CameraCapture.tsx` — Camera and file upload component
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Customization
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Update the background or pizza images in the `public/` folder
+- Tweak the UI in `app/page.tsx` for your own style
+
+## Credits
+
+- Built with [Next.js](https://nextjs.org/)
+- Uses [Vercel Blob](https://vercel.com/docs/storage/vercel-blob) for storage
+- Uses [OpenAI GPT-4 Vision](https://platform.openai.com/docs/guides/vision) for image analysis
+- Confetti by [react-confetti](https://github.com/alampros/react-confetti)
+
+---
+
+Enjoy finding out if your food is pizza! 🍕
